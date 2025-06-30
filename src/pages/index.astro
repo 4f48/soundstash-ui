@@ -4,7 +4,7 @@ import { Font } from "astro:assets";
 import { Button, Card, Form, Input, Label, Section } from "../components";
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,10 +15,24 @@ import { Button, Card, Form, Input, Label, Section } from "../components";
 		<Font cssVariable="--font-inter" preload />
 		<Font cssVariable="--font-jbm" preload />
 	</head>
-	<body
-		class="bg-background text-foreground flex flex-col gap-5 scroll-smooth p-3"
-	>
-		<h1 class="text-2xl font-bold">SoundStash UI</h1>
+	<body class="bg-background text-foreground flex flex-col gap-5 p-3">
+		<div>
+			<h1 class="text-2xl font-bold">SoundStash UI</h1>
+			<p>
+				Svelte components powered by Bits UI designed for SoundStash, the music
+				streaming service where you own your (non-pirated) music.
+			</p>
+		</div>
+		<Section title="Table of Contents">
+			<ul class="[&_a]:text-link ml-5 list-disc [&_a]:underline">
+				<li><a href="#font">Font</a></li>
+				<li><a href="#button">Button</a></li>
+				<li><a href="#input">Input</a></li>
+				<li><a href="#label">Label</a></li>
+				<li><a href="#card">Card</a></li>
+				<li><a href="#form">Form</a></li>
+			</ul>
+		</Section>
 		<Section title="Font" vertical>
 			<p class="font-sans"><u>Inter</u> by Rasmus Andersson</p>
 			<p class="font-mono"><u>JetBrains Mono</u> by JetBrains</p>
@@ -71,11 +85,11 @@ import { Button, Card, Form, Input, Label, Section } from "../components";
 					<Label for="name">Name</Label>
 					<Input id="name" placeholder="New Playlist #1" />
 				</div>
-				<Button>Gotcha!</Button>
+				<Button>Create</Button>
 			</Card.Root>
 		</Section>
 		<Section title="Form">
-			<Form client:load />
+			<Form client:visible />
 		</Section>
 	</body>
 </html>

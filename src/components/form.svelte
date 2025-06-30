@@ -22,7 +22,7 @@
 	}));
 </script>
 
-<Card.Root>
+<Card.Root class="min-w-sm">
 	<Card.Header>
 		<Card.Title>Create your account</Card.Title>
 		<Card.Description
