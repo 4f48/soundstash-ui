@@ -1,5 +1,7 @@
 ---
-
+import "@unocss/reset/normalize.css";
+import { Font } from "astro:assets";
+import { Button, Card, Form, Input, Label, Section } from "../components";
 ---
 
 <html lang="en">
@@ -9,8 +11,71 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+
+		<Font cssVariable="--font-inter" preload />
+		<Font cssVariable="--font-jbm" preload />
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body
+		class="bg-background text-foreground flex flex-col gap-5 scroll-smooth p-3"
+	>
+		<h1 class="text-2xl font-bold">SoundStash UI</h1>
+		<Section title="Font" vertical>
+			<p class="font-sans"><u>Inter</u> by Rasmus Andersson</p>
+			<p class="font-mono"><u>JetBrains Mono</u> by JetBrains</p>
+		</Section>
+		<Section class="flex flex-col gap-2" title="Button" vertical>
+			<div class="flex gap-1">
+				<Button>Primary</Button>
+				<Button variant="outline">Outline</Button>
+				<Button variant="ghost">Ghost</Button>
+				<Button variant="destructive">Destructive</Button>
+			</div>
+			<div class="flex gap-1">
+				<Button disabled>Primary</Button>
+				<Button disabled variant="outline">Outline</Button>
+				<Button disabled variant="ghost">Ghost</Button>
+				<Button disabled variant="destructive">Destructive</Button>
+			</div>
+			<Button class="self-start" loading>Loading...</Button>
+			<div class="mt-1 mt-3 flex gap-1">
+				<Button size="lg">Primary</Button>
+				<Button size="lg" variant="outline">Outline</Button>
+				<Button size="lg" variant="ghost">Ghost</Button>
+				<Button size="lg" variant="destructive">Destructive</Button>
+			</div>
+			<div class="flex gap-1">
+				<Button disabled size="lg">Primary</Button>
+				<Button disabled size="lg" variant="outline">Outline</Button>
+				<Button disabled size="lg" variant="ghost">Ghost</Button>
+				<Button disabled size="lg" variant="destructive">Destructive</Button>
+			</div>
+			<Button class="self-start" loading size="lg">Loading...</Button>
+		</Section>
+		<Section title="Input">
+			<Input placeholder="password" type="password" />
+			<Input disabled placeholder="disabled" />
+		</Section>
+		<Section title="Label">
+			<div class="grid w-full max-w-sm items-center gap-1">
+				<Label for="mail">Email</Label>
+				<Input id="mail" placeholder="you@example.com" type="email" />
+			</div>
+		</Section>
+		<Section title="Card">
+			<Card.Root class="min-w-sm">
+				<Card.Header>
+					<Card.Title>Create playlist</Card.Title>
+					<Card.Description>Let's name your new playlist.</Card.Description>
+				</Card.Header>
+				<div class="grid w-full items-center gap-1">
+					<Label for="name">Name</Label>
+					<Input id="name" placeholder="New Playlist #1" />
+				</div>
+				<Button>Gotcha!</Button>
+			</Card.Root>
+		</Section>
+		<Section title="Form">
+			<Form client:load />
+		</Section>
 	</body>
 </html>

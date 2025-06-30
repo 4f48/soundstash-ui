@@ -1,0 +1,25 @@
+---
+import type { ClassValue } from "clsx";
+
+interface Props {
+	title: string;
+	vertical?: boolean;
+	class?: ClassValue;
+}
+const { title, class: className, vertical = false } = Astro.props;
+---
+
+<section class={className as string}>
+	<h2 id={title.toLowerCase()} class="mb-2 border-b text-lg font-medium">
+		{title}
+	</h2>
+	{
+		vertical ? (
+			<slot />
+		) : (
+			<div class="flex gap-1">
+				<slot />
+			</div>
+		)
+	}
+</section>
