@@ -1,7 +1,15 @@
 ---
 import "@unocss/reset/normalize.css";
 import { Font } from "astro:assets";
-import { Button, Card, Form, Input, Label, Section } from "../components";
+import {
+	Button,
+	Card,
+	Dialog,
+	Form,
+	Input,
+	Label,
+	Section,
+} from "../components";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -15,81 +23,86 @@ import { Button, Card, Form, Input, Label, Section } from "../components";
 		<Font cssVariable="--font-inter" preload />
 		<Font cssVariable="--font-jbm" preload />
 	</head>
-	<body class="bg-background text-foreground flex flex-col gap-5 p-3">
-		<div>
-			<h1 class="text-2xl font-bold">SoundStash UI</h1>
-			<p>
-				Svelte components powered by Bits UI designed for SoundStash, the music
-				streaming service where you own your (non-pirated) music.
-			</p>
-		</div>
-		<Section title="Table of Contents">
-			<ul class="[&_a]:text-link ml-5 list-disc [&_a]:underline">
-				<li><a href="#font">Font</a></li>
-				<li><a href="#button">Button</a></li>
-				<li><a href="#input">Input</a></li>
-				<li><a href="#label">Label</a></li>
-				<li><a href="#card">Card</a></li>
-				<li><a href="#form">Form</a></li>
-			</ul>
-		</Section>
-		<Section title="Font" vertical>
-			<p class="font-sans"><u>Inter</u> by Rasmus Andersson</p>
-			<p class="font-mono"><u>JetBrains Mono</u> by JetBrains</p>
-		</Section>
-		<Section class="flex flex-col gap-2" title="Button" vertical>
-			<div class="flex gap-1">
-				<Button>Primary</Button>
-				<Button variant="outline">Outline</Button>
-				<Button variant="ghost">Ghost</Button>
-				<Button variant="destructive">Destructive</Button>
+	<body class="bg-background text-foreground">
+		<main class="flex flex-col gap-5 p-3">
+			<div>
+				<h1 class="text-2xl font-bold">SoundStash UI</h1>
+				<p>
+					Svelte components powered by Bits UI designed for SoundStash, the
+					music streaming service where you own your (non-pirated) music.
+				</p>
 			</div>
-			<div class="flex gap-1">
-				<Button disabled>Primary</Button>
-				<Button disabled variant="outline">Outline</Button>
-				<Button disabled variant="ghost">Ghost</Button>
-				<Button disabled variant="destructive">Destructive</Button>
-			</div>
-			<Button class="self-start" loading>Loading...</Button>
-			<div class="mt-1 mt-3 flex gap-1">
-				<Button size="lg">Primary</Button>
-				<Button size="lg" variant="outline">Outline</Button>
-				<Button size="lg" variant="ghost">Ghost</Button>
-				<Button size="lg" variant="destructive">Destructive</Button>
-			</div>
-			<div class="flex gap-1">
-				<Button disabled size="lg">Primary</Button>
-				<Button disabled size="lg" variant="outline">Outline</Button>
-				<Button disabled size="lg" variant="ghost">Ghost</Button>
-				<Button disabled size="lg" variant="destructive">Destructive</Button>
-			</div>
-			<Button class="self-start" loading size="lg">Loading...</Button>
-		</Section>
-		<Section title="Input">
-			<Input placeholder="password" type="password" />
-			<Input disabled placeholder="disabled" />
-		</Section>
-		<Section title="Label">
-			<div class="grid w-full max-w-sm items-center gap-1">
-				<Label for="mail">Email</Label>
-				<Input id="mail" placeholder="you@example.com" type="email" />
-			</div>
-		</Section>
-		<Section title="Card">
-			<Card.Root class="min-w-sm">
-				<Card.Header>
-					<Card.Title>Create playlist</Card.Title>
-					<Card.Description>Let's name your new playlist.</Card.Description>
-				</Card.Header>
-				<div class="grid w-full items-center gap-1">
-					<Label for="name">Name</Label>
-					<Input id="name" placeholder="New Playlist #1" />
+			<Section title="Table of Contents">
+				<ul class="[&_a]:text-link ml-5 list-disc [&_a]:underline">
+					<li><a href="#font">Font</a></li>
+					<li><a href="#button">Button</a></li>
+					<li><a href="#input">Input</a></li>
+					<li><a href="#label">Label</a></li>
+					<li><a href="#card">Card</a></li>
+					<li><a href="#form">Form</a></li>
+				</ul>
+			</Section>
+			<Section title="Font" vertical>
+				<p class="font-sans"><u>Inter</u> by Rasmus Andersson</p>
+				<p class="font-mono"><u>JetBrains Mono</u> by JetBrains</p>
+			</Section>
+			<Section class="flex flex-col gap-2" title="Button" vertical>
+				<div class="flex gap-1">
+					<Button>Primary</Button>
+					<Button variant="outline">Outline</Button>
+					<Button variant="ghost">Ghost</Button>
+					<Button variant="destructive">Destructive</Button>
 				</div>
-				<Button>Create</Button>
-			</Card.Root>
-		</Section>
-		<Section title="Form">
-			<Form client:visible />
-		</Section>
+				<div class="flex gap-1">
+					<Button disabled>Primary</Button>
+					<Button disabled variant="outline">Outline</Button>
+					<Button disabled variant="ghost">Ghost</Button>
+					<Button disabled variant="destructive">Destructive</Button>
+				</div>
+				<Button class="self-start" loading>Loading...</Button>
+				<div class="mt-1 mt-3 flex gap-1">
+					<Button size="lg">Primary</Button>
+					<Button size="lg" variant="outline">Outline</Button>
+					<Button size="lg" variant="ghost">Ghost</Button>
+					<Button size="lg" variant="destructive">Destructive</Button>
+				</div>
+				<div class="flex gap-1">
+					<Button disabled size="lg">Primary</Button>
+					<Button disabled size="lg" variant="outline">Outline</Button>
+					<Button disabled size="lg" variant="ghost">Ghost</Button>
+					<Button disabled size="lg" variant="destructive">Destructive</Button>
+				</div>
+				<Button class="self-start" loading size="lg">Loading...</Button>
+			</Section>
+			<Section title="Input">
+				<Input placeholder="password" type="password" />
+				<Input disabled placeholder="disabled" />
+			</Section>
+			<Section title="Label">
+				<div class="grid w-full max-w-sm items-center gap-1">
+					<Label for="mail">Email</Label>
+					<Input id="mail" placeholder="you@example.com" type="email" />
+				</div>
+			</Section>
+			<Section title="Card">
+				<Card.Root class="min-w-sm">
+					<Card.Header>
+						<Card.Title>Create playlist</Card.Title>
+						<Card.Description>Let's name your new playlist.</Card.Description>
+					</Card.Header>
+					<div class="grid w-full items-center gap-1">
+						<Label for="name">Name</Label>
+						<Input id="name" placeholder="New Playlist #1" />
+					</div>
+					<Button>Create</Button>
+				</Card.Root>
+			</Section>
+			<Section title="Form">
+				<Form client:visible />
+			</Section>
+			<Section title="Dialog">
+				<Dialog client:visible />
+			</Section>
+		</main>
 	</body>
 </html>
